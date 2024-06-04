@@ -1,10 +1,6 @@
-import {
-  ConflictException,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { User } from 'src/shemas/user.schema';
+import { User } from 'src/schemas/user.schema';
 import { Model } from 'mongoose';
 
 import { RegisterAuthDto } from 'src/auth/dto/register-auth.dto';
@@ -46,11 +42,13 @@ export class UserService {
   }
 
   async findAll() {
-    return await this.userModel.find();
+    return await this.userModel.find().populate(['notes']);
   }
 
   async findOne(id: string) {
-    return await this.userModel.findById(id);
+    const user = await this.userModel.findById(id);
+    if (!user) throw new NotFoundException(`El usuario con ID: ${id} no se ha encontrado`);
+    return user;
   }
 
   update(id: number, updateUserDto: UpdateAuthDto) {
