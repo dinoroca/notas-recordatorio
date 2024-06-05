@@ -42,11 +42,11 @@ export class UserService {
   }
 
   async findAll() {
-    return await this.userModel.find().populate(['notes']);
+    return await this.userModel.find();
   }
 
   async findOne(id: string) {
-    const user = await this.userModel.findById(id).populate(['notes']);
+    const user = await this.userModel.findById(id).populate(['notes', 'reminders']);
     if (!user) throw new NotFoundException(`El usuario con ID: ${id} no se ha encontrado`);
     return user;
   }

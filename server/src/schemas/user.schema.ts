@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
 import { Note } from './note.schema';
+import { Reminder } from './reminder.schema';
 
 @Schema({
   timestamps: true,
@@ -24,6 +25,9 @@ export class User {
   // Relationships
   @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Note' }] })
   notes: Note[];
+
+  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Reminder' }] })
+  reminders: Reminder[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
