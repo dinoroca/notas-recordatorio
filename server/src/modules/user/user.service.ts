@@ -46,7 +46,7 @@ export class UserService {
   }
 
   async findOne(id: string) {
-    const user = await this.userModel.findById(id);
+    const user = await this.userModel.findById(id).populate(['notes']);
     if (!user) throw new NotFoundException(`El usuario con ID: ${id} no se ha encontrado`);
     return user;
   }

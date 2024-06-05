@@ -6,6 +6,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { VerifyMailComponent } from './verify-mail/verify-mail.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
   ],
   imports: [
     CommonModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    FormsModule,
+    RouterModule
   ]
 })
 export class AuthModule { }
