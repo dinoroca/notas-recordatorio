@@ -7,9 +7,15 @@ import { AuthModule } from './auth/auth.module';
 import { NotesModule } from './modules/notes/notes.module';
 import { ReminderModule } from './modules/reminder/reminder.module';
 
+import { ConfigModule } from '@nestjs/config';
+import { connectDB } from './config/bd-config/mongoose.config';
+
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://127.0.0.1:27017/Notes'),
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    MongooseModule.forRootAsync({ useFactory: async () => await connectDB() }),
     UserModule,
     AuthModule,
     NotesModule,
