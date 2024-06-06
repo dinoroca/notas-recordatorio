@@ -7,44 +7,44 @@
             <form #registroForm="ngForm" (ngSubmit)="registrar(registroForm)">
                 <div class="row">
                     <div class="col-12 col-sm-6">
-                        <input type="text" class="form-control" placeholder="Nombre(s)" name="nombres"
+                        <input type="text" class="form-control py-2" placeholder="Nombre(s)" name="nombres"
                             id="nombres" [(ngModel)]="user.nombres" required />
                     </div>
 
                     <div class="col-12 col-sm-6">
-                        <input type="text" class="form-control" placeholder="Apellido(s)" name="apellidos"
+                        <input type="text" class="form-control py-2" placeholder="Apellido(s)" name="apellidos"
                             id="apellidos" [(ngModel)]="user.apellidos" required />
                     </div>
                 </div>
 
                 <div class="row mt-4">
                     <div class="col-12 col-sm-6">
-                        <input type="email" class="form-control" placeholder="Correo" name="email" id="email"
+                        <input type="email" class="form-control py-2" placeholder="Correo" name="email" id="email"
                             [(ngModel)]="user.email" required />
                     </div>
 
                     <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                        <input type="text" class="form-control" placeholder="WhatsApp" name="telefono"
+                        <input type="text" class="form-control py-2" placeholder="WhatsApp" name="telefono"
                             id="telefono" [(ngModel)]="user.telefono" required maxlength="9" />
                     </div>
                 </div>
 
                 <div class="row mt-4">
                     <div class="col-12 col-sm-6">
-                        <input [type]="password" class="form-control" placeholder="Contraseña"
+                        <input [type]="password" class="form-control py-2" placeholder="Contraseña"
                             (keyup)="compare_password()" name="password1" id="password1" [(ngModel)]="password1"
                             required />
                     </div>
 
                     <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                         <div class="input-group">
-                            <input [type]="password" class="form-control" id="password"
+                            <input [type]="password" class="form-control py-2" id="password"
                                 placeholder="Confirme su contraseña" name="password" [(ngModel)]="user.password"
                                 required (keyup)="compare_password()" />
-                            <a class="btn btn-outline-primary" (click)="onClickPass()">
-                                <i class="bi bi-eye" aria-hidden="true" *ngIf="!show"></i>
-                                <i class="bi bi-eye-slash" aria-hidden="true" *ngIf="show"></i>
-                            </a>
+                                <a class="btn text-black-50" [ngClass]="{'btn-secondary': !show, 'btn-secondary-clicked': show}" (click)="onClickPass()">
+                                    <i class="bi bi-eye" aria-hidden="true" *ngIf="!show"></i>
+                                    <i class="bi bi-eye-slash" aria-hidden="true" *ngIf="show"></i>
+                                  </a>
                         </div>
 
                         <div class="alert alert-danger mt-2 text-center" role="alert" *ngIf="alert_pass">
