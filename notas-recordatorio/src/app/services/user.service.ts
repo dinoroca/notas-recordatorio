@@ -20,4 +20,8 @@ export class UserService {
   registro_user(data: any): Observable<any> {
     return this._http.post(this.url + 'auth/register', data);
   }
+  
+  login_user(data: any): Observable<any> {
+    return this._http.post(this.url + 'auth/login', data);
+  }
 }

@@ -2,16 +2,16 @@
     <div class="mb-5 container d-flex justify-content-center">
         <div class="p-3 p-sm-4 col-12 col-sm-8 rounded shadow">
 
-            <h2 class="text-center text-black-50 fw-bold py-4">¡Regístrate!</h2>
+            <h2 class="text-center fw-bold py-4">¡Regístrate!</h2>
             
             <form #registroForm="ngForm" (ngSubmit)="registrar(registroForm)">
                 <div class="row">
-                    <div class="col-12 col-sm-6">
+                    <div class="col-12 col-sm-6 mt-4">
                         <input type="text" class="form-control py-2" placeholder="Nombre(s)" name="nombres"
                             id="nombres" [(ngModel)]="user.nombres" required />
                     </div>
 
-                    <div class="col-12 col-sm-6">
+                    <div class="col-12 col-sm-6 mt-4">
                         <input type="text" class="form-control py-2" placeholder="Apellido(s)" name="apellidos"
                             id="apellidos" [(ngModel)]="user.apellidos" required />
                     </div>
@@ -23,7 +23,7 @@
                             [(ngModel)]="user.email" required />
                     </div>
 
-                    <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                    <div class="col-12 col-sm-6 mt-4 mt-sm-0">
                         <input type="text" class="form-control py-2" placeholder="WhatsApp" name="telefono"
                             id="telefono" [(ngModel)]="user.telefono" required maxlength="9" />
                     </div>
@@ -36,12 +36,12 @@
                             required />
                     </div>
 
-                    <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                    <div class="col-12 col-sm-6 mt-4 mt-sm-0">
                         <div class="input-group">
                             <input [type]="password" class="form-control py-2" id="password"
                                 placeholder="Confirme su contraseña" name="password" [(ngModel)]="user.password"
                                 required (keyup)="compare_password()" />
-                                <a class="btn text-black-50" [ngClass]="{'btn-secondary': !show, 'btn-secondary-clicked': show}" (click)="onClickPass()">
+                                <a style="color: #7E71E1;" class="btn" [ngClass]="{'btn-secondary': !show, 'btn-secondary-clicked': show}" (click)="onClickPass()">
                                     <i class="bi bi-eye" aria-hidden="true" *ngIf="!show"></i>
                                     <i class="bi bi-eye-slash" aria-hidden="true" *ngIf="show"></i>
                                   </a>
@@ -61,28 +61,9 @@
                     </label>
                 </div>
 
-                <div class="pt-2 text-center">
-                    <small>Al dar click en <strong>Registrar</strong> aceptas nuestros
-                        <a [routerLink]="['/terminos-condiciones']" 
-                        style="cursor: pointer; 
-                        color: #6F42C1;
-                        font-weight: bold;
-                        text-decoration: none;" target="_blank">
-                            Términos y condiciones
-                        </a> y 
-                        <a [routerLink]="['/politica-privacidad']" 
-                        style="cursor: pointer; 
-                        color: #6F42C1;
-                        font-weight: bold;
-                        text-decoration: none;" target="_blank">
-                            Políticas de privacidad
-                        </a>
-                    </small>
-                </div>
-
                 <div class="d-grid gap-2 mt-4">
-                    <button *ngIf="!load_register" type="submit" class="btn btn-primary" [disabled]="registroForm.invalid || !valid">
-                        <i class="bi bi-person-check"></i> &nbsp; Registrar
+                    <button *ngIf="!load_register" type="submit" class="btn btn-principal" [disabled]="registroForm.invalid || !valid">
+                        Registrar
                     </button>
                     <button *ngIf="load_register" class="btn btn-primary" type="button" disabled>
                         <span class="spinner-border spinner-border-sm" aria-hidden="true"></span> &nbsp;
@@ -92,7 +73,7 @@
 
                 <p class="font-size-sm pt-4 text-center">
                     ¿Ya tienes cuenta?
-                    <a class="fw-bold text-decoration-none text-success" [routerLink]="['/login']">
+                    <a class="fw-bold text-decoration-none text-secondary" [routerLink]="['/auth']">
                         Iniciar sesión
                     </a>
                 </p>

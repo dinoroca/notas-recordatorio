@@ -1,0 +1,11 @@
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid container">
+        <a class="navbar-brand">Navbar</a>
+
+        <div class="">
+            <a type="button" (click)="toggleTheme()">
+                <i class="bi" [ngClass]="{'bi-moon-fill': !isDarkTheme(), 'bi-sun-fill': isDarkTheme()}"></i>
+            </a>
+        </div>
+    </div>
+</nav>
