@@ -1,13 +1,14 @@
 import { IsNotEmpty, IsString, IsDefined, IsEmail } from 'class-validator';
+import { LenguageLogin } from 'src/enum/auth.enum';
 
 export class LoginAuthDto {
-  @IsDefined()
-  @IsNotEmpty()
-  @IsEmail()
+  @IsDefined({ message: LenguageLogin.IsDefinedEm })
+  @IsNotEmpty({ message: LenguageLogin.IsNotEmptyEm })
+  @IsEmail({}, { message: LenguageLogin.IsEmailEm })
   email: string;
 
-  @IsDefined()
-  @IsNotEmpty()
-  @IsString()
+  @IsDefined({ message: LenguageLogin.IsDefinedPass })
+  @IsNotEmpty({ message: LenguageLogin.IsNotEmptyPass })
+  @IsString({ message: LenguageLogin.IsStringPass })
   password: string;
 }
