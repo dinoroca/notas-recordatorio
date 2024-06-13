@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/services/user.service';
 
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private _title: Title,
     private _userService: UserService,
-    private _toastrService: ToastrService
+    private _toastrService: ToastrService,
+    private _router: Router
   ) {}
 
   ngOnInit(): void {
@@ -43,11 +45,11 @@ export class LoginComponent implements OnInit {
           
           localStorage.setItem('_id', res.user._id);
           localStorage.setItem('token', res.token);
+          this._router.navigate(['/user']);
           this.load_login = false;
-          this._toastrService.success('Iniciado', 'Confirmado!');
         },
         error: (err) => {
-          this._toastrService.error(err.error.message[0], 'ERROR');
+          this._toastrService.error(err.error.message, 'ERROR');
           this.load_login = false;
         }
       }
