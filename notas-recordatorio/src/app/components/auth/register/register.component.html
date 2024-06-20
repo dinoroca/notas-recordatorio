@@ -2,7 +2,7 @@
     <div class="mb-5 container d-flex justify-content-center">
         <div class="p-3 p-sm-4 col-12 col-sm-8 rounded shadow">
 
-            <h2 class="text-center fw-bold py-4">¡Regístrate!</h2>
+            <h2 class="text-center py-4 fw-bold">¡Regístrate!</h2>
             
             <form #registroForm="ngForm" (ngSubmit)="registrar(registroForm)">
                 <div class="row">
@@ -47,8 +47,8 @@
                                   </a>
                         </div>
 
-                        <div class="alert alert-danger mt-2 text-center" role="alert" *ngIf="alert_pass">
-                            <em>Las contraseñas no coinciden</em>
+                        <div class="alert alert-danger mt-4 text-center pink shadow p-2" role="alert" *ngIf="alert_pass">
+                            <small><em class="notas-text">Las contraseñas no coinciden</em></small>
                         </div>
                     </div>
                 </div>
