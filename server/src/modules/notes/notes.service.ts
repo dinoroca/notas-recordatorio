@@ -3,7 +3,7 @@ import { CreateNoteDto } from './dto/create-note.dto';
 import { UpdateNoteDto } from './dto/update-note.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Note } from 'src/schemas/note.schema';
-import { Model } from 'mongoose';
+import { FilterQuery, Model } from 'mongoose';
 import { UserService } from '../user/user.service';
 
 @Injectable()
@@ -41,6 +41,24 @@ export class NotesService {
     const note = await this.noteModel.findById(id);
     if (!note) throw new NotFoundException(`La nota con ID: ${id} no está disponible`);
     return note;
+  }
+
+  async findOneByTitle(title: string) {
+    const note = await this.noteModel.findOne({ title });
+    console.log(note);
+    if (!note) throw new NotFoundException(`La nota con título: ${title} no está disponible`);
+    return note;
+  }
+
+  async findByTitle(title: string): Promise<any> {
+    let filters: FilterQuery<any> = {};
+
+    if (title) {
+      filters = { title: new RegExp(title, 'i') }; // 'i' para búsqueda case-insensitive
+    }
+
+    const notes = this.noteModel.find(filters).exec();
+    return notes;
   }
 
   // Update note
